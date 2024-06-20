@@ -1,28 +1,27 @@
-#inicio{
+.inicio {
     background-image: url(../images/bg.jpg);
     background-size: cover;
     width: 100%;
-    height: 100vh;
     overflow: hidden;
+
 }
 
 .card {
     width: 492px;
     height: 500px;
-    margin: 50px auto 90px 90px;
-    background-color: rgba(255, 255, 255, 0.9); /* Se aplica opacidad solo al fondo */
+    margin: 50px auto 50px 90px; /* Corregido para centrar horizontalmente */
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
     box-shadow: 0 0 20px black;
     text-align: center;
 }
-
 
 .card button {
     opacity: 1;
     cursor: pointer;
 }
 
-#login {
+.login {
     width: 296px;
     margin-left: auto;
     margin-right: auto;
@@ -30,7 +29,7 @@
     flex-direction: column;
 }
 
-#ingresar {
+.ingresar {
     width: 296px;
     height: 39px;
     background-color: #0842C5;
@@ -39,7 +38,7 @@
     border-radius: 10px;
 }
 
-#registrar {
+.registrar {
     width: 296px;
     height: 39px;
     margin-left: auto;
@@ -48,10 +47,9 @@
     border: none;
     color: white;
     border-radius: 10px;
-} 
+}
 
-input,select{
-
+input, select {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid black;
@@ -60,29 +58,27 @@ input,select{
     height: 20px;
 }
 
-
-
-#document-type {
+.documentType {
     width: 94px;
 }
 
-#dni {
+.dni {
     width: 190px;
     margin-bottom: 40px;
-
 }
 
-
-
-img {
-    margin-bottom: 40px;
-}
-
-#logo{
+.logo {
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 a {
     text-align: center;
     margin-bottom: 30px;
+}
+
+.errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
 }
