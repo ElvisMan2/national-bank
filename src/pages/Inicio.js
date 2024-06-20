@@ -1,6 +1,5 @@
 import React from 'react'
 import '../styles/Inicio.css'
-import line from '../images/line.png'
 import logo from '../images/logo.png'
 
 export default function Inicio() {
@@ -24,7 +23,6 @@ export default function Inicio() {
                     <button type="submit" id="ingresar">Ingresar</button>
                     <br />
 
-                    <img src={line} alt='line' />
                     <button type="button" id="registrar" >Registrar</button>
                     <br />
                 </form>
