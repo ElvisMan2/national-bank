@@ -11,9 +11,9 @@ export default function Menu() {
       <Navbar></Navbar>
       <Banner></Banner>
       <div className='cards__menu'>
-        <CardMenu />
-        <CardMenu />
-        <CardMenu />
+        <CardMenu imagen='gestionar_cuenta.png' />
+        <CardMenu imagen='gestionar_cuenta.png' />
+        <CardMenu imagen='gestionar_cuenta.png' />
       </div>
       <Footer></Footer>
     </div>
