@@ -1,12 +1,12 @@
-.inicio {
-    background-image: url(../images/bg.jpg);
+.login__container {
+    background-image: url('../images/bg.jpg');
     background-size: cover;
     width: 100%;
     overflow: hidden;
-
+    min-height: 100vh;
 }
 
-.card {
+.login__card {
     width: 492px;
     height: 500px;
     margin: 50px auto 50px 90px; /* Corregido para centrar horizontalmente */
@@ -16,12 +16,27 @@
     text-align: center;
 }
 
-.card button {
-    opacity: 1;
-    cursor: pointer;
+.login__logo {
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
-.login {
+.login__documentType {
+    width: 94px;
+}
+
+.login__dni {
+    width: 190px;
+    margin-bottom: 40px;
+}
+
+.login__errorMessage {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.form__login {
     width: 296px;
     margin-left: auto;
     margin-right: auto;
@@ -29,16 +44,18 @@
     flex-direction: column;
 }
 
-.ingresar {
+.login__ingresar {
     width: 296px;
     height: 39px;
     background-color: #0842C5;
     border: none;
     color: white;
     border-radius: 10px;
+    opacity: 1;
+    cursor: pointer;
 }
 
-.registrar {
+.login_registrar {
     width: 296px;
     height: 39px;
     margin-left: auto;
@@ -47,9 +64,11 @@
     border: none;
     color: white;
     border-radius: 10px;
+    opacity: 1;
+    cursor: pointer;
 }
 
-input, select {
+.login__dni, .login__documentType, .login__password {
     background-color: transparent;
     border: none;
     border-bottom: 1px solid black;
@@ -58,27 +77,7 @@ input, select {
     height: 20px;
 }
 
-.documentType {
-    width: 94px;
-}
 
-.dni {
-    width: 190px;
-    margin-bottom: 40px;
-}
 
-.logo {
-    margin-top: 20px;
-    margin-bottom: 40px;
-}
 
-a {
-    text-align: center;
-    margin-bottom: 30px;
-}
 
-.errorMessage {
-    color: red;
-    font-size: 14px;
-    margin-top: 10px;
-}

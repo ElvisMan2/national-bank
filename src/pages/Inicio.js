@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from '../styles/Inicio.module.css';
+import '../styles/Inicio.css';
 import logo from '../images/logo.png';
 
 export default function Inicio() {
@@ -73,16 +73,16 @@ export default function Inicio() {
 
 
     return (
-        <div className={styles.inicio}>
-            <div className={styles.card}>
-                <img src={logo} alt="logo" className={styles.logo} />
-                <form onSubmit={validateForm} className={styles.login}>
+        <div className='login__container'>
+            <div className='login__card'>
+                <img src={logo} alt="logo" className='login__logo' />
+                <form onSubmit={validateForm} className='form__login'>
                     <div>
                         <select
                             name="document-type"
                             value={documentType}
                             onChange={(e) => setDocumentType(e.target.value)}
-                            className={styles.documentType}
+                            className='login__documentType'
                             required
                         >
                             <option value="DNI">DNI</option>
@@ -95,7 +95,7 @@ export default function Inicio() {
                             placeholder="Número de documento"
                             value={dni}
                             onChange={(e) => setDni(e.target.value)}
-                            className={styles.dni}
+                            className='login__dni'
                             required
                         /><br/>
                     </div>
@@ -105,16 +105,16 @@ export default function Inicio() {
                         placeholder="Clave web"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className={styles.password}
+                        className='login__password'
                         required
                     /><br/>
 
-                    <span className={styles.errorMessage}>{errorMessage}</span>
+                    <span className='login__errorMessage'>{errorMessage}</span>
 
-                    <button type="submit" className={styles.ingresar}>Ingresar</button>
+                    <button type="submit" className='login__ingresar'>Ingresar</button>
                     <br />
 
-                    <button type="button" onClick={()=>navigate('/registro')} className={styles.registrar}>Registrar</button>
+                    <button type="button" onClick={()=>navigate('/registro')} className='login_registrar'>Registrar</button>
                     <br />
                 </form>
             </div>
