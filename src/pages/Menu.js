@@ -23,9 +23,9 @@ export default function Menu() {
           ruta='./transferencias'/>
         <CardMenu 
           imagen='pago_tasas.png'
-          titulo='Pagar tasas'
-          descripcion='Cumple con tus obligaciones tributarias de forma rápida y sencilla ...' 
-          ruta='./pagar-tasas'/>
+          titulo='Pagar servicios'
+          descripcion='Realiza el pago de tus servicios de forma rápida y sencilla ...' 
+          ruta='./pago-servicios'/>
       </div>
       <Footer></Footer>
     </div>
