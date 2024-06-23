@@ -11,9 +11,21 @@ export default function Menu() {
       <Navbar></Navbar>
       <Banner></Banner>
       <div className='cards__menu'>
-        <CardMenu imagen='gestionar_cuenta.png' />
-        <CardMenu imagen='gestionar_cuenta.png' />
-        <CardMenu imagen='gestionar_cuenta.png' />
+        <CardMenu 
+          imagen='gestionar_cuenta.png' 
+          titulo='Gestionar cuenta'
+          descripcion='Tener una cuenta nunca fue tan fácil. Apertura de cuenta y familiarízate de todo...'
+          ruta='./gestionar-cuenta' />
+        <CardMenu 
+          imagen='transferencias.png'
+          titulo='Realizar transferencias'
+          descripcion='Realiza transferencias y aprovecha todas las opciones para gestionar tus finanzas de forma rápida ...' 
+          ruta='./transferencias'/>
+        <CardMenu 
+          imagen='pago_tasas.png'
+          titulo='Pagar tasas'
+          descripcion='Cumple con tus obligaciones tributarias de forma rápida y sencilla ...' 
+          ruta='./pagar-tasas'/>
       </div>
       <Footer></Footer>
     </div>

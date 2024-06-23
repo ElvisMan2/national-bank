@@ -1,14 +1,14 @@
 import React from 'react'
 import '../styles/CardMenu.css'
 
-function CardMenu({imagen}) {
+function CardMenu({imagen, titulo, descripcion, ruta}) {
   return (
     <div className='card__menu'>
             <img src={require(`../images/${imagen}`)}   alt="Gestionar cuenta" />
             <div>
-                <h3>Gestionar cuenta</h3><br/>
-                <p>Tener una cuenta nunca fue tan fácil. Apertura de cuenta y familiarízate de todo...</p><br/>
-                <a href="./gestionar-cuenta.html"  class="button">Ver más →</a>
+                <h3>{titulo}</h3><br/>
+                <p>{descripcion}</p><br/>
+                <a href={ruta}  class="button">Ver más →</a>
             </div>
 
     </div>
