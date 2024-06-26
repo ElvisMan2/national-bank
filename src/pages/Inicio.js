@@ -47,7 +47,7 @@ export default function Inicio() {
     };
 
     const loginUser = async (dni, password) => {
-        const response = await fetch('http://167.71.97.221:8080/api/user/login', {
+        const response = await fetch('http://104.248.7.1:8080/api/user/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,7 +67,7 @@ export default function Inicio() {
     const storeUserData = (user) => {
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('userId', user.id);
-        localStorage.setItem('userPassword', user.password);
+        //localStorage.setItem('userPassword', user.password);
     };
 
 

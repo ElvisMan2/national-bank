@@ -1,13 +1,23 @@
-import React from 'react'
-import '../styles/Banner.css'
+import React, { useEffect, useState } from 'react';
+import '../styles/Banner.css';
 
 function Banner() {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const userObject = JSON.parse(user);
+      setUserName(userObject.firstName);
+    }
+  }, []);
+
   return (
     <div className="banner">
-        <h1>¡Bienvenido, <span id="user-name">user name</span>!</h1>
+        <h1>¡Bienvenido, <span id="user-name">{userName || 'usuario'}</span>!</h1>
         <p>Navega seguro en tu banca por internet</p>
     </div>
-  )
+  );
 }
 
-export default Banner
+export default Banner;

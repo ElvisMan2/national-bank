@@ -8,7 +8,7 @@ function CardMenu({imagen, titulo, descripcion, ruta}) {
             <div>
                 <h3>{titulo}</h3><br/>
                 <p>{descripcion}</p><br/>
-                <a href={ruta}  class="button">Ver más →</a>
+                <a href={ruta}  className="button">Ver más →</a>
             </div>
 
     </div>
