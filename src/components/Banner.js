@@ -14,7 +14,7 @@ function Banner() {
 
   return (
     <div className="banner">
-        <h1>¡Bienvenido, <span id="user-name">{userName || 'usuario'}</span>!</h1>
+        <h1>¡Bienvenido, <span>{userName || 'usuario'}</span>!</h1>
         <p>Navega seguro en tu banca por internet</p>
     </div>
   );
