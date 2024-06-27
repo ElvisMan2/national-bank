@@ -8,7 +8,7 @@ import EstadoCuenta from '../components/EstadoCuenta';
 function Perfil() {
   const [userFirstName, setUserFirstName] = useState('');
   const [userLastName, setUserLastName] = useState('');
-  const [activeComponent, setActiveComponent] = useState(null);
+  const [activeComponent, setActiveComponent] = useState(1);
 
   useEffect(() => {
     const user = localStorage.getItem('user');

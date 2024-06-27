@@ -24,7 +24,7 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra ligera para el contenedor */
     border-radius: 8px; /* Bordes redondeados */
     overflow: hidden; /* Oculta cualquier desbordamiento */
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 .gestionar-cuenta__title {
@@ -67,7 +67,7 @@
 }
 
 .gestionar-cuenta__info{
-    margin-top: 80px;
+    margin-top: 40px;
     width: 520px;
 }
 
