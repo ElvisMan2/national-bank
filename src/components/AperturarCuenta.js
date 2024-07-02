@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/AperturarCuenta.css'
+import {updateUserLocalData} from '../utils/utils.js'
 
 function AperturarCuenta() {
   async function crearCuenta() {
@@ -27,7 +28,9 @@ function AperturarCuenta() {
         throw new Error(`Error en la creación de la cuenta: ${errorText}`);
       }else{
         alert('Cuenta creada de manera exitosa');
+        await updateUserLocalData(1);
         window.location.href = './gestionar-cuenta';
+        
       }
   
     } catch (error) {
@@ -35,37 +38,24 @@ function AperturarCuenta() {
     }
   }
   
-
-
   function handleClick() {
     const pin = document.getElementById('pin').value
-    const confirmarPin = document.getElementById('confirmar-pin').value
     const user = localStorage.getItem('user')
     const userObject = JSON.parse(user)
     const password=userObject.password
 
 
-    if (pin === password && pin === confirmarPin) {
+    if (pin === password ) {
       crearCuenta();
     }
     else{
-      if (pin==='' || confirmarPin===''){
-        alert('Por favor complete los campos')
+      if (pin===''){
+        alert('Ingrese su contraseña')
       }else{
-        if (pin !== confirmarPin){
-          alert('Las contraseñas no coinciden')
-        }else{
-          alert('Contraseña incorrecta')
-        }
+        alert('Contraseña incorrecta')
       }
-
-      
     }
-
     }
-
-    
-
   return (
     <div className="crear-cuenta-form">
       <h2>Nueva Cuenta</h2>
@@ -73,8 +63,7 @@ function AperturarCuenta() {
       <form id="crearCuentaForm2">
         <label htmlFor="pin">Para aperturar una cuenta, ingrese su contraseña</label><br />
         <input id="pin" type="password" placeholder="Ingrese contraseña" required /><br />
-        <label htmlFor="confirmar-pin">Confirmar Contraseña</label><br />
-        <input id="confirmar-pin" type="password" placeholder="Confirme su contraseña" required />
+
       </form>
       <button id="nueva-cuenta2" onClick={handleClick}>Continuar</button>
     </div>

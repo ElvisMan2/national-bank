@@ -2,8 +2,25 @@ import React from 'react'
 import '../styles/Transferencias.css'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import { useState, useEffect } from 'react'
 
 function Transferencias() {
+  const [tipo,setTipo] = useState(0)//0: transferencias entre cuentas propias, 1: a cuentas externas
+
+  useEffect(() => {
+    if(tipo===0){
+      document.getElementById('externa').style.display = 'none';
+      document.getElementById('interna').style.display = 'block';
+    }
+
+    if(tipo===1){
+      document.getElementById('externa').style.display = 'block';
+      document.getElementById('interna').style.display = 'none';
+    }
+
+  }, [tipo])
+
+
   return (
     <div>
       <Navbar></Navbar>
@@ -16,8 +33,8 @@ function Transferencias() {
         </div>
 
         <div className="transferencias">
-            <input type="radio" name="transferType" value="betweenAccounts" id="betweenAccounts" /> Entre cuentas propias
-            <input type="radio" name="transferType" value="toExternalAccounts" id="toExternalAccounts" /> A cuentas externas
+            <input type="radio" name="transferType" value="betweenAccounts" id="betweenAccounts"  onChange={() => setTipo(0)} defaultChecked/> Entre cuentas propias
+            <input type="radio" name="transferType" value="toExternalAccounts" id="toExternalAccounts" onChange={() => setTipo(1)} /> A cuentas externas
         </div>
 
         <div className="cuentaOrigen">
@@ -26,13 +43,13 @@ function Transferencias() {
             </select>
         </div>
 
-        <div className="cuentaDestino">
+        <div className="cuentaDestino" id='interna'>
             <label htmlFor="cuentaDestino">Seleccione la cuenta de destino</label><br />
             <select name="cuentaDestino" id="cuentaDestino">
             </select>
         </div>
 
-        <div className="cuentaDestinoExterna">
+        <div className="cuentaDestinoExterna" id='externa'>
             <label htmlFor="cuentaDestinoExterna">Ingrese la cuenta de destino</label><br />
             <input type="text" id="cuentaDestinoExterna" />
         </div>
