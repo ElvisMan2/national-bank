@@ -41,7 +41,7 @@ function CerrarCuenta() {
         <textarea name="textarea" id="textarea" placeholder="Describa brevemente"></textarea>
 
         <label htmlFor="pin">Para cerrar una cuenta, ingrese su contraseña</label><br />
-        <input id="pin" type="password" placeholder="Ingrese contraseña" required /><br />
+        <input name='pin' id="pin" type="password" placeholder="Ingrese contraseña" required /><br />
 
         <button type="reset" id="cerrar-cuenta" onClick={handleClick}>Continuar</button>
     </form>

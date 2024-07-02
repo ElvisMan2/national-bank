@@ -61,7 +61,7 @@ function AperturarCuenta() {
       <h2>Nueva Cuenta</h2>
       <img src={require('../images/tarjeta01.png')} alt="" />
       <form id="crearCuentaForm2">
-        <label htmlFor="pin">Para aperturar una cuenta, ingrese su contraseña</label><br />
+        <label htmlFor="pin" >Para aperturar una cuenta, ingrese su contraseña</label><br />
         <input id="pin" type="password" placeholder="Ingrese contraseña" required /><br />
 
       </form>

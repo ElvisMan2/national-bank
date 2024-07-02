@@ -27,11 +27,11 @@ function ReactivarCuenta() {
     <h2>Reactivación de cuenta</h2>
     <form className="reactivationForm">
 
-        <label for="account-select">Seleccionar cuenta</label>
+        <label htmlFor="accountSelect">Seleccionar cuenta</label>
         <select id="accountSelect">
         </select>
 
-        <label for="pin">Clave web</label>
+        <label htmlFor="pin">Clave web</label>
         <input id="pin" type="password" placeholder="Ingrese su clave web"/>
 
         
