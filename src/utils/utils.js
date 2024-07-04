@@ -66,7 +66,9 @@ export function getUserLocalData() {
 }
 
 export async function updateCuenta(numeroCuenta,nuevoStatus){
+
     const url ='http://104.248.7.1:8080/api/bankAccount/'+numeroCuenta;
+    //alert(numeroCuenta);
                 const data = {
                     "status": nuevoStatus
                 };
