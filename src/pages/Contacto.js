@@ -44,7 +44,7 @@ function Contacto() {
             </div>
         </div>
 
-        <div className="formulario" style={{ display: "none" }}>
+        <div className="formulario">
             <h4>Formulario de sugerencias</h4>
             <textarea className="sugerencias" name="sugerencias" rows="10" cols="50" placeholder="Escribe aquí tus sugerencias..."></textarea>
             <br />
