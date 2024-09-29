@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# Proyecto: Validación de Formulario
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Violación 1: Complejidad Cognitiva Elevada
 
-## Available Scripts
+### Descripción:
+SonarLint detectó que la función `validateForm` tenía una **complejidad cognitiva** de 22, lo cual excedía el límite permitido de 15. Esto ocurría debido a la gran cantidad de condiciones anidadas y validaciones dentro de una única función. La función era difícil de entender y mantener debido a su longitud y la cantidad de decisiones que debía tomar.
 
-In the project directory, you can run:
+### Corrección/Refactorización:
+La función fue dividida en varias funciones más pequeñas, cada una encargada de una validación específica (por ejemplo, validar el DNI, validar el nombre, etc.). Además, se implementaron **retornos tempranos** para evitar la anidación de condiciones y reducir la complejidad.
 
-### `npm start`
+### Fragmento de Código Antes de la Corrección:
+```javascript
+const validateForm = async (event) => {
+    event.preventDefault();
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    const dni = event.target['dni'].value.trim();
+    const nombre = event.target['nombre'].value.trim();
+    const apellidos = event.target['apellidos'].value.trim();
+    const correo = event.target['correo'].value.trim();
+    const celular = event.target['celular'].value.trim();
+    const fechaNacimiento = event.target['fechaNacimiento'].value.trim();
+    const password = event.target['password'].value.trim();
+    const passwordConfirmed = event.target['passwordConfirmed'].value.trim();
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    setErrorMessage('');
 
-### `npm test`
+    let valid = true;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    if (!dni) {
+        setErrorMessage('El número de documento es obligatorio.');
+        valid = false;
+    } else if (documentType === 'DNI' && !/^\d{8}$/.test(dni)) {
+        setErrorMessage('El DNI debe tener 8 dígitos.');
+        valid = false;
+    } else if (documentType === 'Carnet de Extranjeria' && !/^[a-zA-Z0-9]{9}$/.test(dni)) {
+        setErrorMessage('El Carnet de Extranjería debe tener 9 caracteres alfanuméricos.');
+        valid = false;
+    }
 
-### `npm run build`
+    if (!nombre) {
+        setErrorMessage('El nombre es obligatorio.');
+        valid = false;
+    }
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    // Otras validaciones similares...
+};
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
