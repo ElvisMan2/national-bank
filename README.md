@@ -9,7 +9,7 @@ SonarLint detectó que la función `validateForm` tenía una **complejidad cogni
 La función fue dividida en varias funciones más pequeñas, cada una encargada de una validación específica (por ejemplo, validar el DNI, validar el nombre, etc.). Además, se implementaron **retornos tempranos** para evitar la anidación de condiciones y reducir la complejidad.
 
 ### Fragmento de Código Antes de la Corrección:
-```javascript
+
 const validateForm = async (event) => {
     event.preventDefault();
 
@@ -75,3 +75,45 @@ if (pin === password) {
     } else {
       alert('Contraseña incorrecta');
     }
+
+
+## Violación 3: A form label must be associated with a control
+
+### Descripción:
+SonarLint detectó que las etiquetas `<label>` no estaban correctamente asociadas con los controles de formulario. En React, no se debe usar el atributo `for` en las etiquetas `<label>`, sino que los elementos de entrada (como `<input>`, `<select>`) deben estar dentro del elemento `<label>`. Esto mejora la accesibilidad y sigue las mejores prácticas de HTML.
+
+### Corrección/Refactorización:
+Se refactorizó el código para que cada etiqueta `<label>` envuelva a su respectivo control de formulario. Esto asegura que el campo de entrada esté correctamente asociado con la etiqueta, lo que mejora la accesibilidad y la interacción del usuario.
+
+### Fragmento de Código Antes de la Corrección:
+
+<label for="dni">Tipo Documento</label>
+<select id="dni" disabled="disabled">
+  <option value="DNI">DNI</option>
+  <option value="CE">Carnet de Extranjería</option>
+</select>
+
+<label for="nombres">Nombres</label>
+<input id="nombres" type="text" disabled="disabled" />
+
+<label for="celular">Celular</label>
+
+### Fragmento de Código Despues de la Corrección:
+<label>
+  Tipo Documento
+  <select id="dni" disabled="disabled">
+    <option value="DNI">DNI</option>
+    <option value="CE">Carnet de Extranjería</option>
+  </select>
+</label>
+
+<label>
+  Nombres
+  <input id="nombres" type="text" disabled="disabled" />
+</label>
+
+<label>
+  Celular
+  <input id="celular" type="text" disabled="disabled" />
+</label>
+
