@@ -45,16 +45,16 @@ function AperturarCuenta() {
     const password=userObject.password
 
 
-    if (pin === password ) {
+    if (pin === password) {
       crearCuenta();
+    } else if (pin === '') {
+      alert('Ingrese su contraseña');
+    } else {
+      alert('Contraseña incorrecta');
     }
-    else{
-      if (pin===''){
-        alert('Ingrese su contraseña')
-      }else{
-        alert('Contraseña incorrecta')
-      }
-    }
+    
+
+
     }
   return (
     <div className="crear-cuenta-form">

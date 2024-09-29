@@ -18,19 +18,19 @@ function DatosPersonales() {
 
   return (
     <div id="datos-personales">
-      <h2>Información Personal</h2>
-      <form className="formDatos">
-        <div>
-          <label for="dni">Tipo Documento</label>
-          <select id="dni" disabled="disabled">
-            <option value="DNI">DNI</option>
-            <option value="CE">carnet de extranjería</option>
-          </select>
+    <h2>Información Personal</h2>
+    <form className="formDatos">
+      <div>
+        <label for="dni">Tipo Documento</label>
+        <select id="dni" disabled="disabled">
+          <option value="DNI">DNI</option>
+          <option value="CE">carnet de extranjería</option>
+        </select>
 
-          <label for="nombres">Nombres</label>
-          <input id="nombres" type="text" disabled="disabled" />
+        <label for="nombres">Nombres</label>
+        <input id="nombres" type="text" disabled="disabled" />
 
-          <label for="celular">Celular</label>
+        <label for="celular">Celular</label>
           <input id="celular" type="tel" placeholder="Ingrese su número de celular" disabled="disabled" />
         </div>
 
