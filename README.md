@@ -55,7 +55,7 @@ SonarLint detectó que había un `if` anidado dentro de un bloque `else`, lo que
 El bloque `else` fue refactorizado para usar un `else if`, lo que elimina el anidamiento innecesario y hace que el flujo lógico sea más claro y legible.
 
 ### Fragmento de Código Antes de la Corrección:
-```javascript
+
 if (pin === password) {
   crearCuenta();
 } else {
@@ -66,3 +66,12 @@ if (pin === password) {
   }
 }
 
+### Fragmento de Código Despues de la Corrección:
+
+if (pin === password) {
+      crearCuenta();
+    } else if (pin === '') {
+      alert('Ingrese su contraseña');
+    } else {
+      alert('Contraseña incorrecta');
+    }
