@@ -5,7 +5,8 @@ import logo from '../images/logo.png';
 export default function Registro() {
   const [errorMessage, setErrorMessage] = useState('');
 
-  const validateForm = async (event) => {
+  // Función principal de validación de formulario
+const validateForm = async (event) => {
     event.preventDefault();
 
     const documentType = event.target['document-type'].value;
@@ -20,98 +21,127 @@ export default function Registro() {
 
     setErrorMessage('');
 
-    let valid = true;
+    // Validar entradas del formulario y retornar si hay errores
+    if (!validateDni(documentType, dni)) return;
+    if (!validateNombre(nombre)) return;
+    if (!validateApellidos(apellidos)) return;
+    if (!validateCorreo(correo)) return;
+    if (!validateCelular(celular)) return;
+    if (!validateFechaNacimiento(fechaNacimiento)) return;
+    if (!validatePassword(password, passwordConfirmed)) return;
 
+    // Si todas las validaciones pasaron, continuar con el registro del usuario
+    const user = {
+        numIdentification: dni,
+        firstName: nombre,
+        lastName: apellidos,
+        email: correo,
+        phone: celular,
+        birthDate: fechaNacimiento,
+        password: password
+    };
+
+    try {
+        const response = await fetch('http://104.248.7.1:8080/api/user/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(errorText || 'Registration failed');
+        }
+
+        console.log(response.body);
+        alert('Usuario registrado correctamente.');
+        window.location.href = './';
+
+    } catch (error) {
+        setErrorMessage('Error en el registro: ' + error.message);
+    }
+};
+
+// Funciones auxiliares para validar cada campo
+const validateDni = (documentType, dni) => {
     if (!dni) {
         setErrorMessage('El número de documento es obligatorio.');
-        valid = false;
+        return false;
     } else if (documentType === 'DNI' && !/^\d{8}$/.test(dni)) {
         setErrorMessage('El DNI debe tener 8 dígitos.');
-        valid = false;
+        return false;
     } else if (documentType === 'Carnet de Extranjeria' && !/^[a-zA-Z0-9]{9}$/.test(dni)) {
         setErrorMessage('El Carnet de Extranjería debe tener 9 caracteres alfanuméricos.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
+const validateNombre = (nombre) => {
     if (!nombre) {
         setErrorMessage('El nombre es obligatorio.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
+const validateApellidos = (apellidos) => {
     if (!apellidos) {
         setErrorMessage('Los apellidos son obligatorios.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
+const validateCorreo = (correo) => {
     if (!correo) {
         setErrorMessage('El correo es obligatorio.');
-        valid = false;
+        return false;
     } else if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(correo)) {
         setErrorMessage('El formato del correo electrónico no es válido.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
+const validateCelular = (celular) => {
     if (!celular) {
         setErrorMessage('El celular es obligatorio.');
-        valid = false;
+        return false;
     } else if (!/^\d{9}$/.test(celular)) {
         setErrorMessage('El celular debe tener 9 dígitos.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
+const validateFechaNacimiento = (fechaNacimiento) => {
     if (!fechaNacimiento) {
         setErrorMessage('La fecha de nacimiento es obligatoria.');
-        valid = false;
+        return false;
     } else if (!isValidAge(fechaNacimiento)) {
         setErrorMessage('Debes ser mayor o igual a 18 años.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
+const validatePassword = (password, passwordConfirmed) => {
     if (!password) {
         setErrorMessage('La clave web es obligatoria.');
-        valid = false;
+        return false;
     } else if (password.length < 6) {
         setErrorMessage('La clave web debe tener al menos 6 caracteres.');
-        valid = false;
+        return false;
     } else if (password !== passwordConfirmed) {
         setErrorMessage('Las claves no coinciden.');
-        valid = false;
+        return false;
     }
+    return true;
+};
 
-    if (valid) {
-        const user = {
-            numIdentification: dni,
-            firstName: nombre,
-            lastName: apellidos,
-            email: correo,
-            phone: celular,
-            birthDate: fechaNacimiento,
-            password: password
-        };
-
-        try {
-            const response = await fetch('http://104.248.7.1:8080/api/user/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(user)
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(errorText || 'Registration failed');
-            }
-
-            console.log(response.body);
-            alert('Usuario registrado correctamente.')
-            window.location.href = './';
-
-        } catch (error) {
-            setErrorMessage('Error en el registro: ' + error.message);
-        }
-    }
-  };
 
   const isValidAge = (fechaNacimiento) => {
     const today = new Date();
